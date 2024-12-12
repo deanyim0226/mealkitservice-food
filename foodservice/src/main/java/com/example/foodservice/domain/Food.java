@@ -5,5 +5,4 @@ public class Food {
     private String name;
     private String description;
     private double rating;
-
 }
