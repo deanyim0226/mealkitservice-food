@@ -4,4 +4,5 @@ public class Food {
     private int food_id;
     private String name;
     private String description;
+    private double rating;
 }
