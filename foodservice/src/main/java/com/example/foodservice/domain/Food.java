@@ -1,6 +1,13 @@
 package com.example.foodservice.domain;
 
+import jakarta.persistence.*;
+
+import java.util.List;
+
+@Entity
 public class Food {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int food_id;
     private String name;
     private String description;
@@ -9,6 +16,27 @@ public class Food {
     private String videoUrl;
     private int stock;
     private double rating;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+    /*
+    @JoinColumn explicitly specifies the foreign key column
+    It is placed on the owning side of the relationship.
+    It improves clarity and ensures the database column name aligns with your desired naming convention.
+    */
+
+    @ManyToMany
+    @JoinTable(name = "food_review", joinColumns = @JoinColumn(name = "food_id"), inverseJoinColumns = @JoinColumn(name = "review_id"))
+    private List<Review> reviews;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public int getFood_id() {
         return food_id;

@@ -10,10 +10,18 @@ public class FoodController {
 
     /*
     write a review upon purchase
+    generate all the foods
      */
 
     @GetMapping("/getAll")
     public ResponseEntity<?> getAll(){
+
+        return null;
+    }
+
+
+    @GetMapping("/search")
+    public ResponseEntity<?> getFoodByName(){
 
         return null;
     }
